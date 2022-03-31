@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Quick Start &#8212; Towncrier 17.08 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Customising towncrier" href="customisation/index.html" />
+    <link rel="prev" title="Hear ye, hear ye, says the towncrier" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="永久链接至标题">¶</a></h1>
+<p>This guide assumes you have a Python project that you wish to use <code class="docutils literal notranslate"><span class="pre">towncrier</span></code> on, to generate its news files/changelogs.
+It will cover setting up your project with a basic configuration, which you can then feel free to <a class="reference external" href="customisation/index.html">customise</a>.</p>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">towncrier</span></code> keeps its config in the <a class="reference external" href="https://www.python.org/dev/peps/pep-0518/">PEP-518</a> <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p>
+<p>The most basic configuration is annotated below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">towncrier</span><span class="p">]</span>
+    <span class="c1"># The name of your Python package</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="s2">&quot;myproject&quot;</span>
+    <span class="c1"># The path to your Python package.</span>
+    <span class="c1"># If your package lives in &#39;src/myproject/&#39;, it must be &#39;src&#39;,</span>
+    <span class="c1"># but if you don&#39;t keep your code in a &#39;src&#39; dir, remove the</span>
+    <span class="c1"># config option</span>
+    <span class="n">package_dir</span> <span class="o">=</span> <span class="s2">&quot;src&quot;</span>
+    <span class="c1"># Where you want your news files to come out. This can be .rst</span>
+    <span class="c1"># or .md, towncrier&#39;s default template works with both.</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;NEWS.rst&quot;</span>
+</pre></div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">towncrier</span></code> will look for news fragments inside your Python package, in a directory named <code class="docutils literal notranslate"><span class="pre">newsfragments</span></code>.
+With this example project, it will look in <code class="docutils literal notranslate"><span class="pre">src/myproject/newsfragments/</span></code> for them.</p>
+<p>Create this folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir src/myproject/newsfragments/
+# This makes sure that Git will never delete the empty folder
+$ echo &#39;!.gitignore&#39; &gt; src/myproject/newsfragments/.gitignore
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> will remain and keep Git from not tracking the directory.</p>
+</section>
+<section id="detecting-dates-versions">
+<h2>Detecting Dates &amp; Versions<a class="headerlink" href="#detecting-dates-versions" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">towncrier</span></code> needs to know what version your project is, and there are two ways you can give it:</p>
+<ul class="simple">
+<li><p>For Python 2/3 compatible projects, a <code class="docutils literal notranslate"><span class="pre">__version__</span></code> in the top level package.
+This can be either a string literal, a tuple, or an <a class="reference external" href="https://github.com/hawkowl/incremental">Incremental</a> version.</p></li>
+<li><p>Manually passing <code class="docutils literal notranslate"><span class="pre">--version=&lt;myversionhere&gt;</span></code> when interacting with <code class="docutils literal notranslate"><span class="pre">towncrier</span></code>.</p></li>
+</ul>
+<p>As an example, if your package didn’t have a <code class="docutils literal notranslate"><span class="pre">__version__</span></code>, you could manually specify it when calling <code class="docutils literal notranslate"><span class="pre">towncrier</span></code> on the command line with the <code class="docutils literal notranslate"><span class="pre">--version</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ towncrier --version=1.2.3post4
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">towncrier</span></code> will also include the date (in <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> format) when generating news files.
+You can change this with the <code class="docutils literal notranslate"><span class="pre">--date</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ towncrier --date=2018-01-01
+</pre></div>
+</div>
+</section>
+<section id="creating-news-fragments">
+<h2>Creating News Fragments<a class="headerlink" href="#creating-news-fragments" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">towncrier</span></code> news fragments are categorised according to their ‘type’.
+There are five default types, but you can configure them freely (see <a class="reference external" href="configuration.html">Configuration</a> for details).</p>
+<p>The five default types are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feature</span></code>: Signifying a new feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bugfix</span></code>: Signifying a bug fix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code>: Signifying a documentation improvement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">removal</span></code>: Signifying a deprecation or removal of public API.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">misc</span></code>: A ticket has been closed, but it is not of interest to users.</p></li>
+</ul>
+<p>When you create a news fragment, the filename consists of the ticket ID (or some other unique identifier) as well as the ‘type’.
+We can create some example news files to demonstrate:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &#39;Fixed a thing!&#39; &gt; src/myproject/newsfragments/1234.bugfix
+$ echo &#39;Can also be `rst` as well!&#39; &gt; src/myproject/newsfragments/3456.doc.rst
+$ echo &#39;The final part is ignored, so set it to whatever you want.&#39; &gt; src/myproject/newsfragments/8765.removal.txt
+$ echo &#39;misc is special, and does not put the contents of the file in the newsfile.&#39; &gt; src/myproject/newsfragments/1.misc
+</pre></div>
+</div>
+<p>We can then see our news fragments compiled by running <code class="docutils literal notranslate"><span class="pre">towncrier</span></code> in draft mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ towncrier --draft
+</pre></div>
+</div>
+<p>You should get an output similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ towncrier --draft
+Loading template...
+Finding news fragments...
+Rendering news fragments...
+Draft only -- nothing has been written.
+What is seen below is what would be written.
+
+myproject 1.0.2 (2017-08-21)
+============================
+
+
+Bugfixes
+--------
+
+- Fixed a thing! (#1234)
+
+
+Improved Documentation
+----------------------
+
+- Can also be `rst` as well! (#3456)
+
+
+Deprecations and Removals
+-------------------------
+
+- The final part is ignored, so set it to whatever you want. (#8765)
+
+
+Misc
+----
+
+- #1
+</pre></div>
+</div>
+</section>
+<section id="producing-news-files-in-production">
+<h2>Producing News Files In Production<a class="headerlink" href="#producing-news-files-in-production" title="永久链接至标题">¶</a></h2>
+<p>To produce the news file for real, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ towncrier
+</pre></div>
+</div>
+<p>This command will remove the news files (with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span></code>) and append the built news to the filename specified in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, and then stage the news file changes (with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>).
+It leaves committing the changes up to the user.</p>
+</section>
+<section id="finale">
+<h2>Finale<a class="headerlink" href="#finale" title="永久链接至标题">¶</a></h2>
+<p>You should now have everything you need to get started with <code class="docutils literal notranslate"><span class="pre">towncrier</span></code>!
+Please see <a class="reference external" href="customisation/index.html">Customising</a> for some common customisation tasks, or <a class="reference external" href="configuration.html">Configuration</a> for the full configuration specification.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Towncrier</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detecting-dates-versions">Detecting Dates &amp; Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-news-fragments">Creating News Fragments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#producing-news-files-in-production">Producing News Files In Production</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finale">Finale</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="customisation/index.html">Customising <code class="docutils literal notranslate"><span class="pre">towncrier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="上一章">Hear ye, hear ye, says the <code class="docutils literal notranslate"><span class="pre">towncrier</span></code></a></li>
+      <li>Next: <a href="customisation/index.html" title="下一章">Customising <code class="docutils literal notranslate"><span class="pre">towncrier</span></code></a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Amber Brown.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/quickstart.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
