@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017, Amber Brown
+# This file is distributed under the same license as the Towncrier package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Towncrier 17.08\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 14:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/customisation/index.rst:2
+msgid "Customising ``towncrier``"
+msgstr ""
+
+#: ../../docs/customisation/index.rst:4
+msgid ""
+"``towncrier`` can be customised to suit your project's needs. These pages"
+" should describe common customisation tasks, while if you want a "
+"reference, see `Configuration <../configuration.html>`_."
+msgstr ""
+
+#: ../../docs/customisation/newsfile.rst:2
+msgid "Customising the News File Output"
+msgstr ""
+
+#: ../../docs/customisation/newsfile.rst:5
+msgid "Adding Content Above ``towncrier``"
+msgstr ""
+
+#: ../../docs/customisation/newsfile.rst:7
+msgid ""
+"If you wish to have content at the top of the news file (for example, to "
+"say where you can find the tickets), you can use a special rST comment to"
+" tell ``towncrier`` to only update after it. In your existing news file "
+"(e.g. ``NEWS.rst``), add the following line above where you want "
+"``towncrier`` to put content::"
+msgstr ""
+
+#: ../../docs/customisation/newsfile.rst:12
+msgid "In an existing news file, it'll look something like this::"
+msgstr ""
+
+#: ../../docs/customisation/newsfile.rst:27
+msgid "``towncrier`` will not alter content above the comment."
+msgstr ""
+

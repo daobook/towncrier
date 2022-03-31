@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017, Amber Brown
+# This file is distributed under the same license as the Towncrier package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Towncrier 17.08\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 14:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../README.rst:2
+msgid "Hear ye, hear ye, says the ``towncrier``"
+msgstr ""
+
+msgid "GitHub Actions"
+msgstr ""
+
+msgid "Codecov"
+msgstr ""
+
+#: ../../README.rst:13
+msgid ""
+"``towncrier`` is a utility to produce useful, summarised news files for "
+"your project. Rather than reading the Git history as some newer tools to "
+"produce it, or having one single file which developers all write to, "
+"``towncrier`` reads \"news fragments\" which contain information `useful "
+"to end users`."
+msgstr ""
+
+#: ../../README.rst:16
+msgid ""
+"Used by `Twisted <https://github.com/twisted/twisted>`_, `pytest "
+"<https://github.com/pytest-dev/pytest/>`_, `pip "
+"<https://github.com/pypa/pip/>`_, `BuildBot "
+"<https://github.com/buildbot/buildbot>`_, and `attrs <https://github.com"
+"/python-attrs/attrs>`_, among others."
+msgstr ""
+
+#: ../../README.rst:20
+msgid "Philosophy"
+msgstr ""
+
+#: ../../README.rst:22
+msgid ""
+"``towncrier`` delivers the news which is convenient to those that hear "
+"it, not those that write it."
+msgstr ""
+
+#: ../../README.rst:24
+msgid ""
+"That is, by duplicating what has changed from the \"developer log\" "
+"(which may contain complex information about the original issue, how it "
+"was fixed, who authored the fix, and who reviewed the fix) into a \"news "
+"fragment\" (a small file containing just enough information to be useful "
+"to end users), ``towncrier`` can produce a digest of the changes which is"
+" valuable to those who may wish to use the software. These fragments are "
+"also commonly called \"topfiles\" or \"newsfiles\" in Twisted parlance."
+msgstr ""
+
+#: ../../README.rst:27
+msgid ""
+"``towncrier`` works best in a development system where all merges involve"
+" closing a ticket."
+msgstr ""
+
+#: ../../README.rst:31
+msgid "Quick Start"
+msgstr ""
+
+#: ../../README.rst:33
+msgid "Install from PyPI::"
+msgstr ""
+
+#: ../../README.rst:39
+msgid ""
+"``towncrier``, as a command line tool, works on Python 2.7 and 3.5+ only."
+" It is usable by projects written in other languages, provided you "
+"specify the project version either in the configuration file or on the "
+"command line. For Python 2/3 compatible projects, the version can be "
+"discovered automatically."
+msgstr ""
+
+#: ../../README.rst:43
+msgid ""
+"In your project root, add a ``towncrier.toml`` or a ``pyproject.toml`` "
+"file (if both files exist, the first will take precedence). You can "
+"configure your project in two ways. To configure it via an explicit "
+"directory, add:"
+msgstr ""
+
+#: ../../README.rst:52
+msgid ""
+"Alternatively, to configure it relative to a (Python) package directory, "
+"add:"
+msgstr ""
+
+#: ../../README.rst:63
+msgid ""
+"``towncrier`` will also look in ``pyproject.toml`` for configuration if "
+"``towncrier.toml`` is not found."
+msgstr ""
+
+#: ../../README.rst:65
+msgid ""
+"For the latter, news fragments (see \"News Fragments\" below) should be "
+"in a ``newsfragments`` directory under your package. Using the above "
+"example, your news fragments would be ``src/myproject/newsfragments/``)."
+msgstr ""
+
+#: ../../README.rst:70
+msgid ""
+"To prevent git from removing the ``newsfragments`` directory, make a "
+"``.gitignore`` file in it with::"
+msgstr ""
+
+#: ../../README.rst:74
+msgid "This will keep the folder around, but otherwise \"empty\"."
+msgstr ""
+
+#: ../../README.rst:76
+msgid ""
+"``towncrier`` needs to know what version your project is, and there are "
+"three ways you can give it:"
+msgstr ""
+
+#: ../../README.rst:78
+msgid ""
+"For Python 2/3 compatible projects, a ``__version__`` in the top level "
+"package. This can be either a string literal, a tuple, or an `Incremental"
+" <https://github.com/hawkowl/incremental>`_ version."
+msgstr ""
+
+#: ../../README.rst:81
+msgid ""
+"Manually passing ``--version=<myversionhere>`` when interacting with "
+"``towncrier``."
+msgstr ""
+
+#: ../../README.rst:83
+msgid "Definining a ``version`` option in a configuration file:"
+msgstr ""
+
+#: ../../README.rst:91
+msgid ""
+"To create a new news fragment, use the ``towncrier create`` command. For "
+"example::"
+msgstr ""
+
+#: ../../README.rst:96
+msgid "To produce a draft of the news file, run::"
+msgstr ""
+
+#: ../../README.rst:100
+msgid "To produce the news file for real, run::"
+msgstr ""
+
+#: ../../README.rst:104
+msgid ""
+"This command will remove the news files (with ``git rm``) and append the "
+"built news to the filename specified by the ``filename`` configuration "
+"option, and then stage the news file changes (with ``git add``). It "
+"leaves committing the changes up to the user."
+msgstr ""
+
+#: ../../README.rst:107
+msgid ""
+"If you wish to have content at the top of the news file (for example, to "
+"say where you can find the tickets), put your text above a rST comment "
+"that says::"
+msgstr ""
+
+#: ../../README.rst:111
+msgid ""
+"``towncrier`` will then put the version notes after this comment, and "
+"leave your existing content that was above it where it is."
+msgstr ""
+
+#: ../../README.rst:115
+msgid "News Fragments"
+msgstr ""
+
+#: ../../README.rst:117
+msgid ""
+"``towncrier`` has a few standard types of news fragments, signified by "
+"the file extension. These are:"
+msgstr ""
+
+#: ../../README.rst:120
+msgid "``.feature``: Signifying a new feature."
+msgstr ""
+
+#: ../../README.rst:121
+msgid "``.bugfix``: Signifying a bug fix."
+msgstr ""
+
+#: ../../README.rst:122
+msgid "``.doc``: Signifying a documentation improvement."
+msgstr ""
+
+#: ../../README.rst:123
+msgid "``.removal``: Signifying a deprecation or removal of public API."
+msgstr ""
+
+#: ../../README.rst:124
+msgid "``.misc``: A ticket has been closed, but it is not of interest to users."
+msgstr ""
+
+#: ../../README.rst:126
+msgid ""
+"The start of the filename is the ticket number, and the content is what "
+"will end up in the news file. For example, if ticket #850 is about adding"
+" a new widget, the filename would be "
+"``myproject/newsfragments/850.feature`` and the content would be "
+"``myproject.widget has been added``."
+msgstr ""
+
+#: ../../README.rst:131
+msgid "Further Options"
+msgstr ""
+
+#: ../../README.rst:133
+msgid ""
+"Towncrier has the following global options, which can be specified in the"
+" toml file:"
+msgstr ""
+
+#: ../../README.rst:153
+msgid ""
+"If a single file is used, the content of that file gets overwritten each "
+"time."
+msgstr ""
+
+#: ../../README.rst:155
+msgid ""
+"If ``title_format`` is unspecified or an empty string, the default format"
+" will be used. If set to ``false``, no title will be created. This can be"
+" useful if the specified template creates the title itself."
+msgstr ""
+
+#: ../../README.rst:159
+msgid "Furthermore, you can customize each of your own fragment types using:"
+msgstr ""
+
+#: ../../README.rst:177
+msgid "Automatic pull request checks"
+msgstr ""
+
+#: ../../README.rst:179
+msgid "To check if a feature branch adds at least one news fragment, run::"
+msgstr ""
+
+#: ../../README.rst:183
+msgid ""
+"By default this compares the current branch against ``origin/master``. "
+"You can use ``--compare-with`` if the trunk is named differently::"
+msgstr ""
+
+#: ../../README.rst:187
+msgid ""
+"The check is automatically skipped when the main news file is modified "
+"inside the branch as this signals a release branch that is expected to "
+"not have news fragments."
+msgstr ""
+

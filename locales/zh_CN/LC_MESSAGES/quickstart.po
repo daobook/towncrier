@@ -1,0 +1,178 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017, Amber Brown
+# This file is distributed under the same license as the Towncrier package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Towncrier 17.08\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 14:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/quickstart.rst:2
+msgid "Quick Start"
+msgstr ""
+
+#: ../../docs/quickstart.rst:4
+msgid ""
+"This guide assumes you have a Python project that you wish to use "
+"``towncrier`` on, to generate its news files/changelogs. It will cover "
+"setting up your project with a basic configuration, which you can then "
+"feel free to `customise <customisation/index.html>`_."
+msgstr ""
+
+#: ../../docs/quickstart.rst:8
+msgid "Configuration"
+msgstr ""
+
+#: ../../docs/quickstart.rst:10
+msgid ""
+"``towncrier`` keeps its config in the `PEP-518 "
+"<https://www.python.org/dev/peps/pep-0518/>`_ ``pyproject.toml`` file."
+msgstr ""
+
+#: ../../docs/quickstart.rst:12
+msgid "The most basic configuration is annotated below::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:26
+msgid ""
+"By default, ``towncrier`` will look for news fragments inside your Python"
+" package, in a directory named ``newsfragments``. With this example "
+"project, it will look in ``src/myproject/newsfragments/`` for them."
+msgstr ""
+
+#: ../../docs/quickstart.rst:29
+msgid "Create this folder::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:35
+msgid ""
+"The ``.gitignore`` will remain and keep Git from not tracking the "
+"directory."
+msgstr ""
+
+#: ../../docs/quickstart.rst:39
+msgid "Detecting Dates & Versions"
+msgstr ""
+
+#: ../../docs/quickstart.rst:41
+msgid ""
+"``towncrier`` needs to know what version your project is, and there are "
+"two ways you can give it:"
+msgstr ""
+
+#: ../../docs/quickstart.rst:43
+msgid ""
+"For Python 2/3 compatible projects, a ``__version__`` in the top level "
+"package. This can be either a string literal, a tuple, or an `Incremental"
+" <https://github.com/hawkowl/incremental>`_ version."
+msgstr ""
+
+#: ../../docs/quickstart.rst:45
+msgid ""
+"Manually passing ``--version=<myversionhere>`` when interacting with "
+"``towncrier``."
+msgstr ""
+
+#: ../../docs/quickstart.rst:47
+msgid ""
+"As an example, if your package didn't have a ``__version__``, you could "
+"manually specify it when calling ``towncrier`` on the command line with "
+"the ``--version`` flag::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:51
+msgid ""
+"``towncrier`` will also include the date (in ``YYYY-MM-DD`` format) when "
+"generating news files. You can change this with the ``--date`` flag::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:58
+msgid "Creating News Fragments"
+msgstr ""
+
+#: ../../docs/quickstart.rst:60
+msgid ""
+"``towncrier`` news fragments are categorised according to their 'type'. "
+"There are five default types, but you can configure them freely (see "
+"`Configuration <configuration.html>`_ for details)."
+msgstr ""
+
+#: ../../docs/quickstart.rst:63
+msgid "The five default types are:"
+msgstr ""
+
+#: ../../docs/quickstart.rst:65
+msgid "``feature``: Signifying a new feature."
+msgstr ""
+
+#: ../../docs/quickstart.rst:66
+msgid "``bugfix``: Signifying a bug fix."
+msgstr ""
+
+#: ../../docs/quickstart.rst:67
+msgid "``doc``: Signifying a documentation improvement."
+msgstr ""
+
+#: ../../docs/quickstart.rst:68
+msgid "``removal``: Signifying a deprecation or removal of public API."
+msgstr ""
+
+#: ../../docs/quickstart.rst:69
+msgid "``misc``: A ticket has been closed, but it is not of interest to users."
+msgstr ""
+
+#: ../../docs/quickstart.rst:71
+msgid ""
+"When you create a news fragment, the filename consists of the ticket ID "
+"(or some other unique identifier) as well as the 'type'. We can create "
+"some example news files to demonstrate::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:79
+msgid ""
+"We can then see our news fragments compiled by running ``towncrier`` in "
+"draft mode::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:83
+msgid "You should get an output similar to this::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:121
+msgid "Producing News Files In Production"
+msgstr ""
+
+#: ../../docs/quickstart.rst:123
+msgid "To produce the news file for real, run::"
+msgstr ""
+
+#: ../../docs/quickstart.rst:127
+msgid ""
+"This command will remove the news files (with ``git rm``) and append the "
+"built news to the filename specified in ``pyproject.toml``, and then "
+"stage the news file changes (with ``git add``). It leaves committing the "
+"changes up to the user."
+msgstr ""
+
+#: ../../docs/quickstart.rst:132
+msgid "Finale"
+msgstr ""
+
+#: ../../docs/quickstart.rst:134
+msgid ""
+"You should now have everything you need to get started with "
+"``towncrier``! Please see `Customising <customisation/index.html>`_ for "
+"some common customisation tasks, or `Configuration <configuration.html>`_"
+" for the full configuration specification."
+msgstr ""
+
